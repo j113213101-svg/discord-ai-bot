@@ -1,1 +1,1 @@
-web: python discord_ai_bot.py
+worker: python main.py
