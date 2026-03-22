@@ -643,7 +643,30 @@ async def before_daily_reminders():
 # 啟動！
 # ──────────────────────────────────────────────
 if __name__ == "__main__":
+    from flask import Flask
+    import threading
+    
+    # 建立 Flask 應用用於健康檢查
+    app = Flask(__name__)
+    
+    @app.route('/health', methods=['GET'])
+    def health():
+        return {'status': 'ok'}, 200
+    
+    @app.route('/', methods=['GET'])
+    def index():
+        return {'message': 'Discord AI Bot is running'}, 200
+    
+    # 在後台執行 Flask
+    def run_flask():
+        app.run(host='0.0.0.0', port=8080, debug=False)
+    
+    flask_thread = threading.Thread(target=run_flask, daemon=True)
+    flask_thread.start()
+    
     print("🚀 AI 高素質朋友圈啟動中...")
     print("📖 指令：直接說話、打綽號、!discuss、!all、!stop、!roles、!clear、!remind")
     print("🎭 成員：小暖、Rex、凱哥、小夥、Eason")
+    print("🌐 HTTP 服務已在 8080 端口啟動")
     bot.run(DISCORD_TOKEN)
+
