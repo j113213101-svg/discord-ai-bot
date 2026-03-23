@@ -7,7 +7,7 @@ Discord AI 夥伴群組 Bot（v5 - 高素質朋友圈）
 - 角色都是各領域的成功人士，講話有深度有格局
 - 不是每次都全員回覆，隨機 2-3 個人接話
 - 角色之間會互相回應、補充觀點
-- 隨機閒聊（偶爾分享見聞和思考）
+- 隨機閒聊（偶爾分享見聞和思考
 - 說話自然但有水準，像真正的高端朋友圈
 """
 
@@ -643,30 +643,7 @@ async def before_daily_reminders():
 # 啟動！
 # ──────────────────────────────────────────────
 if __name__ == "__main__":
-    from flask import Flask
-    import threading
-    
-    # 建立 Flask 應用用於健康檢查
-    app = Flask(__name__)
-    
-    @app.route('/health', methods=['GET'])
-    def health():
-        return {'status': 'ok'}, 200
-    
-    @app.route('/', methods=['GET'])
-    def index():
-        return {'message': 'Discord AI Bot is running'}, 200
-    
-    # 在後台執行 Flask
-    def run_flask():
-        app.run(host='0.0.0.0', port=8080, debug=False)
-    
-    flask_thread = threading.Thread(target=run_flask, daemon=True)
-    flask_thread.start()
-    
-    print("🚀 AI 高素質朋友圈啟動中...")
-    print("📖 指令：直接說話、打綽號、!discuss、!all、!stop、!roles、!clear、!remind")
-    print("🎭 成員：小暖、Rex、凱哥、小夥、Eason")
-    print("🌐 HTTP 服務已在 8080 端口啟動")
+    print("\u{1F680} AI \u9AD8\u7D20\u8CEA\u670B\u53CB\u5708\u555F\u52D5\u4E2D...")
+    print("\u{1F4D6} \u6307\u4EE4\uFF1A\u76F4\u63A5\u8AAA\u8A71\u3001\u6253\u7DBD\u865F\u3001!discuss\u3001!all\u3001!stop\u3001!roles\u3001!clear\u3001!remind")
+    print("\u{1F3AD} \u6210\u54E1\uFF1A\u5C0F\u6696\u3001Rex\u3001\u51F1\u54E5\u3001\u5C0F\u5925\u3001Eason")
     bot.run(DISCORD_TOKEN)
-
